@@ -19,6 +19,7 @@ header {
 
 header svg {
     max-height: 70px;
+    cursor: pointer;
 }
 
 header a {
