@@ -1,0 +1,56 @@
+﻿*{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #616161;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #424242;
+    height: 5rem;
+}
+
+header svg {
+    max-height: 70px;
+}
+
+header a {
+    text-decoration: none;
+    color: #00BBC9;
+    font-size: 18px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background: #616161;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+header i {
+    font-size: 25px;
+}
+
+
+header a:hover {
+    color: #00747C;
+    background: #616161;
+    transition: 0.4s;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+main {
+    max-width: 1500px;
+    margin: 0 auto; 
+}

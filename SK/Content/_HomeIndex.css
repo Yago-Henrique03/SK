@@ -1,0 +1,26 @@
+﻿.firstcontentpg {
+    height: 20rem;
+    border-radius: 4px 60px;
+    background: url(https://dmarket.com/blog/csgo-skins-in-counter-strike-2/banner.jpg) no-repeat center;
+    background-size: cover;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firstcontentpg h2 { 
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.firstcontentpg h2 span {
+    color: #00BBC9; 
+}
+
+.secondcontentpg {
+    color: white;
+}
