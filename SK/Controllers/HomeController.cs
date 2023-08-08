@@ -23,5 +23,12 @@ namespace SK.Controllers
 
             return View();
         }
+
+
+        public ActionResult VisualizacaoSkin(Produto produto)
+        {
+            //cria view de visualizacao
+            return View();
+        }
     }
 }
