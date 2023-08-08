@@ -140,7 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\contexto\Contexto.cs" />
-    <Compile Include="Models\contexto\Produto.cs" />
+    <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\ProdutoREPO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

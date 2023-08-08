@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     <link href="~/Content/_HomeIndex.css" rel="stylesheet" type="text/css" />
+
 }
 
 <div class="firstcontentpg">
@@ -16,7 +17,7 @@
 <div class="thirthycontentpg">
 @foreach (var item in Model)
 {
-    <div class="bg-product">
+    <div class="bg-product" onclick="teste()">
         <div class="img-productbg">
             <img alt="@item.Nome_Produto" src="@item.ImageUrl">
         </div>
@@ -35,3 +36,9 @@
         <h3 class="danger">R$ 2.385,00</h3>
     </div>*@
 </div>
+
+<script>
+    function teste() {
+        //request controler
+    }
+</script>

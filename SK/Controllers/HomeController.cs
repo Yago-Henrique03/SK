@@ -18,12 +18,6 @@ namespace SK.Controllers
             return View(lista);
         }
 
-        public ActionResult Index(Produto produto)
-        {
-
-            return View();
-        }
-
 
         public ActionResult VisualizacaoSkin(Produto produto)
         {
