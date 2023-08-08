@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<SK.Models.Produto>
 @{
     ViewBag.Title = "Index";
     <link href="~/Content/_HomeIndex.css" rel="stylesheet" type="text/css" />
@@ -10,4 +10,28 @@
 
 <div class="secondcontentpg">
     <h3>Com a chegada da nova SOURCE 2 você não quer as mesmas SKINS, quer?</h3>
+    <p>Veja as skins disponíveis abaixo</p>
+</div>
+
+<div class="thirthycontentpg">
+@foreach (var item in Model)
+{
+    <div class="bg-product">
+        <div class="img-productbg">
+            <img alt="@item.Nome_Produto" src="@item.ImageUrl">
+        </div>
+        <h3>@item.Nome_Produto</h3>
+        <h3 class="danger">R$ @item.Preco</h3>
+        <div class="addtocart">
+            <button >ADICIONAR AO CARRINHO</button>
+        </div>
+    </div>
+}
+    @*<div class="bg-product">
+        <div class="img-productbg">
+            <img alt="M4A4 (StatTrak™) | Temukau (Nova de Fábrica)" src="https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszFJTwW08izmZWAluLLP7LWnn8f6ZEgj-uZpY-i2Fe2qRY5Zj37INOQcVQ7MgzRrwDvwO7mgJLvtZ7BnWwj5Hel2Lkmow">
+        </div>
+        <h3>M4A4 (StatTrak™) | Temukau (Nova de Fábrica)</h3>
+        <h3 class="danger">R$ 2.385,00</h3>
+    </div>*@
 </div>
