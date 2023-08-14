@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SK.Models.Carrinho>
+
+@{
+    ViewBag.Title = "Cart";
+    <link href="~/Content/_HomeCarrinho.css" rel="stylesheet" type="text/css" />
+}
+
+<h2 class="Title">Carrinho - Compras</h2>
+
+
+<div class="cart">
+@if (Model != null && Model.Any())
+{
+
+    decimal total = 0;
+
+    foreach (var item in Model)
+    {
+
+        <div class="produto" id="@item.ProdutoId">
+            <div>
+                <h2>@item.Nome_Produto</h2>
+                <img src="@item.ImageUrl" />
+                <h3>R$ @item.Preco</h3>
+            </div>
+            <div class="btn-control">
+                <div class="quantityController">
+                    <button onclick="cart.Decrement(@item.ProdutoId)">-</button>
+                    <span id="ChangeQuantity-@item.ProdutoId">@item.Quantidade</span>
+                    <button onclick="cart.Increment(@item.ProdutoId)">+</button>
+                </div>
+                <button onclick="cart.removeFromCart(@item.ProdutoId)">REMOVER</button>
+            </div>
+        </div>
+        total += item.Preco * item.Quantidade;
+    }
+
+    <div class="produto total">
+        <p>TOTAL</p>
+        <p id="Total">R$ @total </p>
+    </div>
+}
+else
+{
+    <div class="noHaveItems">
+        <div>
+            <h1>Você não possui itens no carrinho</h1>
+            <p>Clique no botão "VOLTAR A SKINS" para visualizar todos os produtos</p>
+        </div>
+        <i class="ph ph-shopping-cart"></i>
+    </div>
+}
+</div>
+<a class="returnToIndex" href="/Home/Index">Voltar a SKINS</a>
+
+
+<script src="~/scripts/_CartRequests.js"></script>
+<script>
+    cart.init({
+        urls: {
+            addToCart: '@Url.Action("AddToCart", "Carrinho")',
+            removeCart: '@Url.Action("RemoveFromCart", "Carrinho")',
+            Increment: '@Url.Action("Increment", "Carrinho")',
+            Decrement: '@Url.Action("Decrement", "Carrinho")'
+        },
+    });
+</script>

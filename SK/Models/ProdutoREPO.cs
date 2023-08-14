@@ -40,7 +40,7 @@ namespace SK.Models
                     ProdutoId = int.Parse(reader["ProdutoId"].ToString()),
                     Nome_Produto = reader["Nome_Produto"].ToString(),
                     ImageUrl = reader["ImageUrl"].ToString(),
-                    Preco = Double.Parse(reader["Preco"].ToString()),
+                    Preco = Decimal.Parse(reader["Preco"].ToString()),
                     Tipo = reader["Tipo"].ToString()
                 };
                 alunos.Add(temObjeto);

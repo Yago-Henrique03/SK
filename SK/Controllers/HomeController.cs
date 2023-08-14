@@ -9,20 +9,22 @@ namespace SK.Controllers
 {
     public class HomeController : Controller
     {
+        
+        private ProdutoREPO produtoapp = new ProdutoREPO();
+
         // GET: Home
         public ActionResult Index()
         {
-            ProdutoREPO produto = new ProdutoREPO();
-
-            var lista = produto.ListarTodos();
+           
+            var lista = produtoapp.ListarTodos();
             return View(lista);
         }
 
-
-        public ActionResult VisualizacaoSkin(Produto produto)
+        public ActionResult ViewProduct(int id)
         {
+            var item = produtoapp.ListarId(id);
             //cria view de visualizacao
-            return View();
+            return View(item);
         }
     }
 }

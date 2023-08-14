@@ -1,0 +1,32 @@
+﻿@model SK.Models.Produto
+
+@{
+    ViewBag.Title = Model.Nome_Produto;
+    Layout = null;
+    <link href="~/Content/_HomeViewProduct.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="mainTitle">
+    <div class="control-product">
+        <div>
+            <h1>@Model.Nome_Produto</h1>
+            <div>
+                <img src="@Model.ImageUrl" />
+            </div>
+        </div>
+       <div class="leftsd">
+           <div class="contentbg">
+               <div class="price">
+                   <h2>R$ @Model.Preco</h2>
+                   <button>COMPRAR +</button>
+               </div>
+               <button>ADICIONAR AO CARRINHO</button>
+               <p>Categoria: @Model.Tipo</p>
+           </div>
+           <button class="return-btn" onclick="detail.returnToSkins()">Voltar a SKINS</button>
+       </div>
+        
+    </div>
+
+</div>
+
