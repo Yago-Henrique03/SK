@@ -48,5 +48,14 @@ namespace SK.Models
             reader.Close();
             return alunos;
         }
+
+        public void NewProduct(Produto produto)
+        {
+            using( contexto = new Contexto())
+            {
+                var strQuery = $"INSERT INTO PRODUTO VALUES ('${produto.Nome_Produto}', ${produto.Preco}, '${produto.Tipo}', '${produto.ImageUrl}')";
+                contexto.ExecutaComando(strQuery);
+            }
+        }
     }
 }

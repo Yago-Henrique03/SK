@@ -11,6 +11,7 @@
     };
 
     var details = function (Id) {
+        debugger;
         $.get(config.urls.viewProduct, {
             id: Id
         }).done(function (data) {

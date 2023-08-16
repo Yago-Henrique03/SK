@@ -63,10 +63,15 @@
     background: deepskyblue;
 }
 
+.price i {
+    font-size: 15px;
+}
+
 .price button:hover {
     background: #48D1CC;
     color: white;
     transition: 0.4s;
+    cursor: pointer;
 }
 
 .contentbg p {

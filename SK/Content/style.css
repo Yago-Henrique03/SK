@@ -16,9 +16,10 @@ header {
     height: 5rem;
 }
 
-header svg {
-    max-height: 70px;
-    cursor: pointer;
+.Logo {
+    height: 70px;
+    width: 70px;
+    background: none;
 }
 
 header a {
@@ -40,7 +41,6 @@ header i {
 
 header a:hover {
     color: #00747C;
-    background: #616161;
     transition: 0.4s;
 }
 

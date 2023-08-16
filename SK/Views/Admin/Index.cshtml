@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    <link href="~/Content/_AdminIndex.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Cadastrar produto</h2>
+
+<form method="post" class="formulary" onsubmit="enviaDados(event)">
+    
+    <div>
+        <label for="Nome_Produto">Nome da skin</label>
+        <input id="Nome_Produto" name="Nome_Produto" type="text" placeholder="Insira o nome..." />
+    </div>
+
+    <div>
+        <lable for="Preco">Preço</lable>
+        <input id="Preco" name="Preco" data-type="money" placeholder="Insira o valor..." />
+    </div>
+
+    <div>
+        <label for="ImageUrl">Url da Imagem</label>
+        <input id="ImageUrl" name="ImageUrl" type="text" placeholder="Http://..." />
+    </div>
+
+    <select name="Tipo" id="Tipo">
+        <option>Selecione um Tipo</option>
+        <option value="facas">Facas</option>
+        <option>SMG</option>
+        <option>Agente</option>
+        <option>Pistolas</option>
+    </select>
+
+    <input type="submit" value="Adicionar +" />
+</form>
+
+<script>
+    function enviaDados(event) {
+        event.preventDefault();
+
+        var produto = {
+            Nome_Produto : $("#Nome_Produto").val(),
+            Preco : +$("#Preco").val().toDecimal(),
+            ImageUrl : $("#ImageUrl").val(),
+            Tipo : $("#Tipo").val()
+        }
+
+        console.log(produto);
+
+        $.post("/Admin/Post", produto).done(function (data) {
+            console.log("Produto adicionado ao banco");
+        }).fail(function (xhr) {
+            alert("Erro ao adicionar")
+        });
+    }
+</script>

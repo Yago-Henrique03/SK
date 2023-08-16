@@ -18,9 +18,8 @@
            <div class="contentbg">
                <div class="price">
                    <h2>R$ @Model.Preco</h2>
-                   <button>COMPRAR +</button>
+                   <button onclick="cart.addCart(@Model.ProdutoId)"><i class="ph ph-shopping-cart"></i></button>
                </div>
-               <button>ADICIONAR AO CARRINHO</button>
                <p>Categoria: @Model.Tipo</p>
            </div>
            <button class="return-btn" onclick="detail.returnToSkins()">Voltar a SKINS</button>
