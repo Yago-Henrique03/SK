@@ -134,7 +134,9 @@
     <Content Include="scripts\ui.js" />
     <Content Include="scripts\_CartRequests.js" />
     <Content Include="scripts\_Details.js" />
+    <Content Include="scripts\_NewProduct.js" />
     <Content Include="scripts\_phosphor-icons.js" />
+    <Content Include="scripts\_puxaCarrinho.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

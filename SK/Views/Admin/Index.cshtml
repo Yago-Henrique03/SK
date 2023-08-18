@@ -2,11 +2,12 @@
 @{
     ViewBag.Title = "Index";
     <link href="~/Content/_AdminIndex.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 }
 
-<h2>Cadastrar produto</h2>
+<h2 class="Title">Cadastrar produto</h2>
 
-<form method="post" class="formulary" onsubmit="enviaDados(event)">
+<form method="post" class="formulary" onsubmit="newProduct.enviaDados(event)">
     
     <div>
         <label for="Nome_Produto">Nome da skin</label>
@@ -20,7 +21,7 @@
 
     <div>
         <label for="ImageUrl">Url da Imagem</label>
-        <input id="ImageUrl" name="ImageUrl" type="text" placeholder="Http://..." />
+        <input id="ImageUrl" onchange="ImageChange()" name="ImageUrl" type="text" placeholder="http://steamcommunity..." />
     </div>
 
     <select name="Tipo" id="Tipo">
@@ -29,28 +30,25 @@
         <option>SMG</option>
         <option>Agente</option>
         <option>Pistolas</option>
+        <option>Rifles</option>
     </select>
+
+    <img src="" id="imgToShow" />
 
     <input type="submit" value="Adicionar +" />
 </form>
 
+<script src="~/scripts/_NewProduct.js"></script>
 <script>
-    function enviaDados(event) {
-        event.preventDefault();
+    newProduct.init({
+        urls: {
+            newProductRoute: '@Url.Action("Post", "Admin")',
+        },
+    });
 
-        var produto = {
-            Nome_Produto : $("#Nome_Produto").val(),
-            Preco : +$("#Preco").val().toDecimal(),
-            ImageUrl : $("#ImageUrl").val(),
-            Tipo : $("#Tipo").val()
-        }
-
-        console.log(produto);
-
-        $.post("/Admin/Post", produto).done(function (data) {
-            console.log("Produto adicionado ao banco");
-        }).fail(function (xhr) {
-            alert("Erro ao adicionar")
-        });
+    function ImageChange() {
+        let value = $("#ImageUrl").val();
+        $("#imgToShow").attr("src", value);
     }
+
 </script>

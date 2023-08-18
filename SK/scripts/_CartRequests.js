@@ -17,7 +17,7 @@
         $.get(config.urls.addToCart, {
             id: Id
         }).done(function (data) {
-            console.log("Produto adicionado ao carrinho");
+            puxaCarrinho()
         }).fail(function (xhr) {
             alert("Erro ao remover")
         });
@@ -29,16 +29,15 @@
         }).done(function (data) {
             // remove o produto e atualiza o preço.
             let quantity = parseInt($(`#ChangeQuantity-${Id}`).text());
-            let total = parseFloat($("#Total").text().replace(',', '.'));
-            let value = parseFloat($(`#preco-${Id}`).text().replace(',', '.'))
+            let total = parseFloat($("#Total").text().toDecimal());
+            let value = parseFloat($(`#preco-${Id}`).text().toDecimal())
             let newValue = total - (value * quantity);
-            $("#Total").text(newValue.toFixed(2).replace('.', ','));
+            $("#Total").text(newValue.toMoney());
             $(`#${Id}`).slideUp(function () {
                 $(this).remove();
             });
-
+            puxaCarrinho()
             // validação caso não exista produto no carrinho
-            debugger;
             let valueOfDivs = $(".cart > div").length;
             let newDiv = `<div class="noHaveItems"><div><h1>Você não possui itens no carrinho</h1><p>Clique no botão "VOLTAR A SKINS" para visualizar todos os produtos</p></div><i class="ph ph-shopping-cart"></i></div>`;
             
@@ -61,11 +60,11 @@
             $(`#ChangeQuantity-${Id}`).text(newQuantity);
 
             //atualiza o total
-            let total = parseFloat($("#Total").text().replace(',', '.'));
-            let value = parseFloat($(`#preco-${Id}`).text().replace(',', '.'))
+            let total = parseFloat($("#Total").text().toDecimal());
+            let value = parseFloat($(`#preco-${Id}`).text().toDecimal())
             let newValue = total + value;
-            $("#Total").text(newValue.toFixed(2).replace('.', ','));
-
+            $("#Total").text(newValue.toMoney());
+            puxaCarrinho()
         }).fail(function (xhr) {
             alert("Erro ao remover")
         })
@@ -84,11 +83,11 @@
                 $(`#ChangeQuantity-${Id}`).text(newQuantity);
 
                 //atualiza o total
-                let total = parseFloat($("#Total").text().replace(',', '.'));
-                let value = parseFloat($(`#preco-${Id}`).text().replace(',', '.'))
+                let total = parseFloat($("#Total").text().toDecimal());
+                let value = parseFloat($(`#preco-${Id}`).text().toDecimal())
                 let newValue = total - value;
-                $("#Total").text(newValue.toFixed(2).replace('.', ','));
-
+                $("#Total").text(newValue.toMoney());
+                puxaCarrinho()
             }).fail(function (xhr) {
                 alert("Erro ao remover")
             })

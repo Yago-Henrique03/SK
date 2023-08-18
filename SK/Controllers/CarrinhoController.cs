@@ -35,5 +35,16 @@ namespace SK.Controllers
         {
             carrinho.Decrement(id);
         }
+
+        public int lengthCarrinho()
+        {
+            int soma = 0;
+            var produtos = carrinho.ListarTodos();
+            foreach(Carrinho item in produtos)
+            {
+                soma += item.Quantidade;
+            }
+            return soma;
+        }
     }
 }

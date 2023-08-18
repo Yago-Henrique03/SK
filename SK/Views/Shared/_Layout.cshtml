@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="puxaCarrinho()">
     <header>
         <a href="/Home/Index" class="Logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="karambit-knife"><g data-name="Layer 16"><path fill="#ecf0f1" d="M276.3 193.591c-9.2-10.759-42.236-46.729-97.92-55.787-74.814-12.17-128.91 34.256-136.3 40.817 3.005-5.034 58.24-94.057 160.938-94.621 78.006-.427 127.907 50.487 136.647 59.714zM360.28 392.2a55.192 55.192 0 0 0 76.578 22.7 55.83 55.83 0 0 0 4.19-2.672l-.069.308 4.289 13.411a2.95 2.95 0 0 0 5.578.121l17.319-47.016a28.483 28.483 0 0 0-2.02-24.014l-8.872-15.468a55.192 55.192 0 0 0-77.566-19.07c-23.735 15.11-32.289 46.676-19.427 71.7zm25.112-5.32a31.149 31.149 0 1 1 34.707 9.4 31.171 31.171 0 0 1-34.707-9.403z"></path><path fill="#bdc3c7" d="M421.2 395.793c-.372.155-.715.345-1.1.488a31.149 31.149 0 1 1-2.3-59.246 252.794 252.794 0 0 0-5.947-25.147 55 55 0 0 0-32.147 8.616c-23.735 15.106-32.289 46.672-19.427 71.693a55.153 55.153 0 0 0 57.652 29.3 220.531 220.531 0 0 0 3.269-25.704zM74.252 156.524l-.028.021C98.606 143.394 135 130.747 178.379 137.8c55.685 9.058 88.724 45.028 97.92 55.787l32.863-25.865c-73.362-51.657-166.181-59.115-234.91-11.198z"></path><path fill="#414141" d="m460.2 331.877-6.831-6.055a445.971 445.971 0 0 0-102.052-171.138l-.2.118 1.473-11.089a5.254 5.254 0 0 0-7.823-5.249l-17.856 10.242a11.28 11.28 0 1 0-19.57 11.225L266.4 183.41a7.139 7.139 0 0 0 .791 12.776l44.593 18.7A157.3 157.3 0 0 1 377.065 322.1c-2.118 2.132 41 1.976 80.74 18.232Z"></path><path fill="#313131" d="M374.252 233.442a265.637 265.637 0 0 0-72.188-70.487L266.4 183.41a7.139 7.139 0 0 0 .791 12.776l44.593 18.7A157.3 157.3 0 0 1 377.065 322.1c-1.36 1.37 15.952 1.8 39.034 6.238a265.367 265.367 0 0 0-41.847-94.896Z"></path></g></svg>
@@ -17,21 +17,25 @@
         <nav>
             <ul>
                 <li><a href="/Admin/Index"><i class="ph ph-user"></i></a></li>
-                <li><a href="/Carrinho/Index"><i class="ph ph-shopping-cart-simple"></i></a></li>
+                <li class="cart-icon"><a href="/Carrinho/Index">
+                    <i class="ph ph-shopping-cart-simple"></i>
+                    </a>
+                    <div class="cart-count"><span id="cartquantity"></span></div>
+                </li>
             </ul>
         </nav>
     </header>
     <main>
         @RenderBody()
     </main>
-
+    
+    <script src="~/scripts/_puxaCarrinho.js"></script>
     <script src="~/scripts/_phosphor-icons.js"></script>
     <script src="~/scripts/jquery-ui-1.10.4.custom.js"></script>
-    <script src="~/scripts/jquery-ui.js"></script>
     <script src="~/scripts/jquery.form.js"></script>
-    <script src="~/scripts/jquery.mask.js"></script>
     <script src="~/scripts/jquery.min.js"></script>
     <script src="~/scripts/jquery-ui.min.js"></script>
+    <script src="~/scripts/jquery.mask.js"></script>
     <script src="~/scripts/ui.js"></script>
 </body>
 </html>

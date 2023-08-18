@@ -53,8 +53,17 @@ namespace SK.Models
         {
             using( contexto = new Contexto())
             {
-                var strQuery = $"INSERT INTO PRODUTO VALUES ('${produto.Nome_Produto}', ${produto.Preco}, '${produto.Tipo}', '${produto.ImageUrl}')";
-                contexto.ExecutaComando(strQuery);
+                var culture = new System.Globalization.CultureInfo("en-US");
+                if(produto.ProdutoId == 0)
+                {
+                    var strQuery = $"INSERT INTO Produto VALUES ('{produto.Nome_Produto}', {produto.Preco.ToString("0.00", culture)}, '{produto.Tipo}', '{produto.ImageUrl}')";
+                    contexto.ExecutaComando(strQuery);
+                } else
+                {
+                    var strQuery = $"UPDATE Produto SET Nome_Produto='{produto.Nome_Produto}', Preco={produto.Preco.ToString("0.00", culture)}, '{produto.Tipo}', '{produto.ImageUrl}' WHERE ProdutoId={produto.ProdutoId}";
+                    contexto.ExecutaComando(strQuery);
+                }
+                    
             }
         }
     }

@@ -17,9 +17,10 @@ namespace SK.Controllers
         }
 
         [HttpPost]
-        public void Post(Produto produto)
+        public ActionResult Post(Produto produto)
         {
             produtoapp.NewProduct(produto);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

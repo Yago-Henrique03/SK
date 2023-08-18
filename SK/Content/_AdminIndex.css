@@ -1,6 +1,14 @@
-﻿.formulary {
-    margin-top: 30px;
+﻿.Title {
+    color: white;
     display: flex;
+    justify-content: center;
+}
+
+
+.formulary {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10px;
@@ -24,4 +32,16 @@
 
 .formulary input[type=submit] {
     background: cyan;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#imgToShow {
+    max-height: 200px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: gray;
+    padding: 10px;
+    border-radius: 4px;
 }

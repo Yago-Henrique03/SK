@@ -1,5 +1,4 @@
 ﻿.cart {
-   
     max-width: 80%;
     margin: 20px auto;
 }
@@ -16,7 +15,7 @@
     background: #616161;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     font-size: .8rem;
     padding: 20px;
 }
@@ -68,6 +67,7 @@
 
 .total {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     font-size: 1rem;
     font-weight: bold;
@@ -115,4 +115,22 @@ a:hover {
 .returnToIndex:hover  {
    background: darkcyan;
    color: white;
+}
+
+.itemDetails {
+    max-width: 210px;
+    width: 100%;
+}
+
+.itemDetails h2 {
+    max-width: 200px;
+    text-overflow: ellipsis;
+}
+
+.itemDetails img {
+    margin-top: 10px;
+}
+
+.itemDetails h3 {
+    margin-top: 5px;
 }

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Cart";
+    ViewBag.Carrinho = Model.Count();
     <link href="~/Content/_HomeCarrinho.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 }
@@ -19,10 +20,10 @@
     {
 
         <div class="produto" id="@item.ProdutoId">
-            <div>
+            <div class="itemDetails">
                 <h2>@item.Nome_Produto</h2>
                 <img src="@item.ImageUrl" />
-                <h3>R$ <span id="preco-@item.ProdutoId">@item.Preco</span></h3>
+                <h3>R$ <span id="preco-@item.ProdutoId" data-type="money">@item.Preco</span></h3>
             </div>
             <div class="btn-control">
                 <div class="quantityController">
@@ -38,7 +39,7 @@
 
     <div class="produto total">
         <p>TOTAL</p>
-        <p>R$ <span id="Total">@total</span> </p>
+        <p>R$ <span id="Total" data-type="money">@total</span> </p>
     </div>
 }
 else
