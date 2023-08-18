@@ -14,12 +14,20 @@
     gap: 10px;
 }
 
+.bg-form {
+    background: gray;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
 .formulary input, select {
     height: 35px;
     width: 350px;
     border-radius: 4px;
     padding: 10px;
     font-weight: bold;
+    margin-bottom: 10px;
+    border: none;
 }
 
 .formulary div {
@@ -35,13 +43,44 @@
     width: 200px;
     height: 50px;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 #imgToShow {
-    max-height: 200px;
+    max-height: 350px;
+    max-width: 350px;
     margin-top: 10px;
     margin-bottom: 20px;
     background: gray;
     padding: 10px;
     border-radius: 4px;
+}
+
+.id-control {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.id-control input {
+    width: 55%;
+}
+
+.id-control button {
+    padding: 10px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    background: cyan;
+    transition: 0.4s;
+    
+}
+
+.id-control button:hover {
+    background: darkcyan;
+    border: 1px solid cyan;
+    color: white;
 }

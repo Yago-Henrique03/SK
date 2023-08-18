@@ -10,7 +10,7 @@
 <h2 class="Title">Carrinho - Compras</h2>
 
 
-<div class="cart">
+<div class="cart" onload="formatValues()">
 @if (Model != null && Model.Any())
 {
 
@@ -23,7 +23,7 @@
             <div class="itemDetails">
                 <h2>@item.Nome_Produto</h2>
                 <img src="@item.ImageUrl" />
-                <h3>R$ <span id="preco-@item.ProdutoId" data-type="money">@item.Preco</span></h3>
+                <h3>R$ <span id="preco-@item.ProdutoId" data-type="money" class="formatted">@item.Preco</span></h3>
             </div>
             <div class="btn-control">
                 <div class="quantityController">
@@ -39,7 +39,7 @@
 
     <div class="produto total">
         <p>TOTAL</p>
-        <p>R$ <span id="Total" data-type="money">@total</span> </p>
+        <p>R$ <span id="Total" data-type="money" class="formatted">@total</span> </p>
     </div>
 }
 else
@@ -66,4 +66,5 @@ else
             Decrement: '@Url.Action("Decrement", "Carrinho")'
         },
     });
+
 </script>

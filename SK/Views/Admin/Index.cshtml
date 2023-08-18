@@ -9,33 +9,46 @@
 
 <form method="post" class="formulary" onsubmit="newProduct.enviaDados(event)">
     
-    <div>
-        <label for="Nome_Produto">Nome da skin</label>
-        <input id="Nome_Produto" name="Nome_Produto" type="text" placeholder="Insira o nome..." />
+    <div class="bg-form">
+        <div>
+            <div class="id-control">
+                <div>
+                    <label for="ProdutoId">ID do Produto</label>
+                    <input type="number" onchange="newProduct.showProduto()" id="ProdutoId" placeholder="Insira o ID" disabled />
+                </div>
+                <button type="button" onclick="newProduct.EnableID()">Editar item</button>
+            </div>
+        </div>
+
+
+        <div class=".form-flex">
+            <label for="Nome_Produto">Nome da skin</label>
+            <input id="Nome_Produto" name="Nome_Produto" type="text" placeholder="Insira o nome..." />
+        </div>
+
+        <div class=".form-flex">
+            <lable for="Preco">Preço</lable>
+            <input id="Preco" name="Preco" data-type="money" placeholder="Insira o valor..." />
+        </div>
+
+        <div class=".form-flex">
+            <label for="ImageUrl">Url da Imagem</label>
+            <input id="ImageUrl" onchange="ImageChange()" name="ImageUrl" type="text" placeholder="http://steamcommunity..." />
+        </div>
+
+        <select name="Tipo" id="Tipo">
+            <option>Selecione um Tipo</option>
+            <option value="facas">Facas</option>
+            <option>SMG</option>
+            <option>Agente</option>
+            <option>Pistolas</option>
+            <option>Rifles</option>
+        </select>
+
+        <img src="" id="imgToShow" />
+
+        <input type="submit" value="Adicionar +" id="btn-submit"/>
     </div>
-
-    <div>
-        <lable for="Preco">Preço</lable>
-        <input id="Preco" name="Preco" data-type="money" placeholder="Insira o valor..." />
-    </div>
-
-    <div>
-        <label for="ImageUrl">Url da Imagem</label>
-        <input id="ImageUrl" onchange="ImageChange()" name="ImageUrl" type="text" placeholder="http://steamcommunity..." />
-    </div>
-
-    <select name="Tipo" id="Tipo">
-        <option>Selecione um Tipo</option>
-        <option value="facas">Facas</option>
-        <option>SMG</option>
-        <option>Agente</option>
-        <option>Pistolas</option>
-        <option>Rifles</option>
-    </select>
-
-    <img src="" id="imgToShow" />
-
-    <input type="submit" value="Adicionar +" />
 </form>
 
 <script src="~/scripts/_NewProduct.js"></script>

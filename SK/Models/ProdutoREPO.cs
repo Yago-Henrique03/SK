@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SK.Models.contexto;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace SK.Models
 {
@@ -14,9 +15,22 @@ namespace SK.Models
         {
             using (contexto = new Contexto())
             {
-                var strQuery = "SELECT * FROM PRODUTO";
-                var retornoDataReader = contexto.ExecutaComandoRetorno(strQuery);
+                var nomeProcedure = "dbo.listar";
+
+                var parametro1 = new SqlParameter("@TableName", SqlDbType.NVarChar, 128);
+                parametro1.Value = "PRODUTO";
+
+                var parametro2 = new SqlParameter("@Campo", System.Data.SqlDbType.NVarChar, 128);
+                parametro2.Value = "";
+
+                var parametro3 = new SqlParameter("@Parameter", SqlDbType.NVarChar, 1000);
+                parametro3.Value = "";
+
+                var retornoDataReader = contexto.ExecutaProcedureComRetorno(nomeProcedure, parametro1, parametro2, parametro3);
                 return TransformaReaderEmListaDeObjeto(retornoDataReader);
+                //var strQuery = "SELECT * FROM PRODUTO";
+                //var retornoDataReader = contexto.ExecutaComandoRetorno(strQuery);
+                //return TransformaReaderEmListaDeObjeto(retornoDataReader);
             }
         }
 
@@ -24,8 +38,16 @@ namespace SK.Models
         {
             using (contexto = new Contexto())
             {
-                var strQuery = string.Format("SELECT * FROM PRODUTO WHERE ProdutoId = {0}", Id);
-                var retornoDataReader = contexto.ExecutaComandoRetorno(strQuery);
+                var nomeProcedure = "dbo.listar";
+
+                var parametro1 = new SqlParameter("@TableName", SqlDbType.NVarChar, 128);
+                parametro1.Value = "PRODUTO";
+
+                var parametro2 = new SqlParameter("@Campo", System.Data.SqlDbType.NVarChar, 128) { Value = "ProdutoId" };
+
+                var parametro3 = new SqlParameter("@Parameter", SqlDbType.NVarChar, 1000) { Value = Id };
+
+                var retornoDataReader = contexto.ExecutaProcedureComRetorno(nomeProcedure, parametro1, parametro2, parametro3);
                 return TransformaReaderEmListaDeObjeto(retornoDataReader).FirstOrDefault();
             }
         }
@@ -53,16 +75,13 @@ namespace SK.Models
         {
             using( contexto = new Contexto())
             {
-                var culture = new System.Globalization.CultureInfo("en-US");
-                if(produto.ProdutoId == 0)
-                {
-                    var strQuery = $"INSERT INTO Produto VALUES ('{produto.Nome_Produto}', {produto.Preco.ToString("0.00", culture)}, '{produto.Tipo}', '{produto.ImageUrl}')";
-                    contexto.ExecutaComando(strQuery);
-                } else
-                {
-                    var strQuery = $"UPDATE Produto SET Nome_Produto='{produto.Nome_Produto}', Preco={produto.Preco.ToString("0.00", culture)}, '{produto.Tipo}', '{produto.ImageUrl}' WHERE ProdutoId={produto.ProdutoId}";
-                    contexto.ExecutaComando(strQuery);
-                }
+                var ProdutoId = new SqlParameter("@ProdutoId", SqlDbType.Int) { Value = produto.ProdutoId };
+                var Nome_Produto = new SqlParameter("@Nome_Produto", SqlDbType.NVarChar, 50) { Value = produto.Nome_Produto };
+                var Preco = new SqlParameter("@Preco", SqlDbType.Decimal) { Value = produto.Preco };
+                var Tipo = new SqlParameter("@Tipo", SqlDbType.NVarChar, 50) { Value = produto.Tipo };
+                var ImageUrl = new SqlParameter("@ImageUrl", SqlDbType.NVarChar, -1) { Value = produto.ImageUrl };
+
+                contexto.ExecutaProcedure("dbo.AdicionarProduto", ProdutoId, Nome_Produto, Preco, Tipo, ImageUrl);
                     
             }
         }

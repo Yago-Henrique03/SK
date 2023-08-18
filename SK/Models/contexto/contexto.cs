@@ -27,6 +27,49 @@ namespace SK.Models.contexto
             cmd.ExecuteNonQuery();
         }
 
+        public void ExecutaProcedure(string ProcedureName, params SqlParameter[] parametros)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = ProcedureName,
+                CommandType = CommandType.StoredProcedure,
+                Connection = connection
+            };
+
+            if( parametros != null)
+            {
+                foreach (SqlParameter parametro in parametros)
+                {
+                    cmd.Parameters.Add(parametro);
+                }
+            }
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+        public SqlDataReader ExecutaProcedureComRetorno(string ProcedureName, params SqlParameter[] parametros)
+        {
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = ProcedureName,
+                CommandType = CommandType.StoredProcedure,
+                Connection = connection
+            };
+
+
+            if (parametros != null)
+            {
+                foreach (SqlParameter parametro in parametros)
+                {
+                    cmd.Parameters.Add(parametro);
+                }
+            }
+
+            return cmd.ExecuteReader();
+        }
+
+
         public SqlDataReader ExecutaComandoRetorno(string query)
         {
             SqlCommand cmd = new SqlCommand(query, connection);
